@@ -1,0 +1,53 @@
+.header {
+  background-color: #d9d9d9;
+}
+
+.imgflexx {
+  width: 153px;
+  height: 46px;
+  margin: 20px 0 20px 63px;
+}
+
+.contentContainer {
+  margin: 0 98px;
+}
+
+.ant-table-content {
+  border: 1px solid #d9d9d9;
+  border-radius: 8px 8px 8px 8px;
+  box-shadow: 1px 5px 15px 0px rgba(83, 83, 83, 0.75);
+  -webkit-box-shadow: 1px 5px 15px 0px rgba(83, 83, 83, 0.75);
+  -moz-box-shadow: 1px 5px 15px 0px rgba(83, 83, 83, 0.75);
+}
+
+.ant-breadcrumb {
+  margin: 20px 0;
+}
+
+.ant-input,
+.ant-input-group-addon .ant-btn {
+  height: 40px;
+}
+.top-tools-bar {
+  display: flex;
+  flex-direction: row;
+}
+
+.btn-addUser {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 72%;
+}
+
+.ant-btn {
+  height: 40px;
+}
+
+.ant-spin {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 199px;
+  justify-content: flex-end;
+}

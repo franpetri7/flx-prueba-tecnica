@@ -1,0 +1,12 @@
+.container {
+  width: 100%;
+  height: 90px;
+  background-color: #d9d9d9;
+}
+.containerImg {
+  margin: 25px 50px;
+}
+.buttonprimary {
+  width: 100px;
+  height: 100px;
+}

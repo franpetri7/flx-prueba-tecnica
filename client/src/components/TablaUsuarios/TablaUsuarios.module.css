@@ -1,0 +1,168 @@
+.container {
+  margin-top: 10px;
+  margin: 0 80px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.tablecontainer {
+  margin: 0px auto;
+  margin-bottom: 35px;
+  overflow-x: auto;
+  box-shadow: -4px 0 8px rgba(0, 0, 0, 0.1), 4px 0 8px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  border: 1px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 24px;
+}
+thead {
+  background-color: rgba(217, 217, 217, 0.3);
+}
+th {
+  background-color: rgba(217, 217, 217, 0.08);
+  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #f2f2f2;
+}
+th,
+td {
+  padding: 8px;
+  text-align: left;
+}
+
+tr {
+  height: 65px;
+}
+
+th:nth-child(1),
+td:nth-child(1) {
+  width: 25%;
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+  width: 25%;
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+  width: 25%;
+}
+
+th:nth-child(4),
+td:nth-child(4),
+th:nth-child(5),
+td:nth-child(5) {
+  width: calc((100% - 75%) / 2);
+}
+
+.buttoncontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+.editButton,
+.deleteButton {
+  margin: 3px;
+  background-color: transparent;
+  border: none;
+  color: rgba(24, 144, 255, 1);
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.editButton:hover,
+.deleteButton:hover {
+  color: rgba(24, 144, 255, 0.5);
+}
+
+.active {
+  background-color: rgba(82, 196, 26, 1);
+  color: #f2f2f2;
+}
+
+.inactive {
+  background-color: rgba(255, 163, 158, 1);
+}
+
+.active {
+  appearance: none;
+  color: rgba(82, 196, 26, 0.8);
+  background-color: rgba(183, 235, 143, 0.3);
+  border: 0.7px solid rgba(82, 196, 26, 0.8);
+  border-radius: 2px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0,
+    rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  padding: 6px 16px;
+}
+.inactive {
+  appearance: none;
+  color: rgba(245, 34, 45, 0.8);
+  background-color: rgba(255, 163, 158, 0.3);
+  border: 0.7px solid rgba(245, 34, 45, 0.8);
+  border-radius: 2px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0,
+    rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  padding: 6px 16px;
+}
+.deleteuser {
+  color: red;
+}
+
+.titlemodal {
+  font-size: large;
+  font-weight: 600;
+}
+.modalcontainer {
+  margin-top: 15px;
+  padding: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.modalinputcontainer {
+  padding: 25px;
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, auto);
+  gap: 40px 30px;
+}
+
+.modalinputcontainer Input {
+  width: 100%;
+}
+.selectcontainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px 0;
+}
+.spantext {
+  display: flex;
+  flex-direction: column;
+  gap: 10px 0;
+}
+.formitem {
+  display: flex;
+  flex-direction: column;
+}
