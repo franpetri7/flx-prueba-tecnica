@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Pagination, Spin, Button } from "antd";
+import { Pagination, Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import BarraUsuarios from "../BarraUsuarios/BarraUsuarios";
 import ModalForm from "../Modals/ModalForm";
 import ModalDelete from "../Modals/ModalDelete";
-
 import styles from "../TablaUsuarios/TablaUsuarios.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { getUsers } from "../../redux/actions";
@@ -15,10 +14,8 @@ const TablaUsuarios = () => {
   const users = useSelector((state) => state.allUsers);
   const usersTotal = useSelector((state) => state.allUsers.total);
   const loading = useSelector((state) => state.loading);
-  const antIcon = <LoadingOutlined style={{ fontSize: 54 }} spin />;
 
   //Estados locales
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpenDelete, setIsModalOpenDelete] = useState(false);
   const [selectedUserId, setSelectedUserId] = useState(null);
@@ -28,17 +25,18 @@ const TablaUsuarios = () => {
   useEffect(() => {
     dispatch(getUsers(pageIndex, pageSize));
   }, [dispatch]);
+
+  //Variables
   const hitCount = usersTotal;
+  const antIcon = <LoadingOutlined style={{ fontSize: 54 }} spin />;
 
   //Funciones
   const showModal = (userId) => {
-    console.log(userId);
     setSelectedUserId(userId);
     setIsModalOpen(true);
   };
 
   const showModalDelete = (userId) => {
-    console.log(userId);
     setselectedUserDelete(userId);
     setIsModalOpenDelete(true);
   };
@@ -57,7 +55,9 @@ const TablaUsuarios = () => {
     <>
       <BarraUsuarios pageIndex={pageIndex} pageSize={pageSize} />
       {loading ? (
-        <Spin className="ant-spin" indicator={antIcon} />
+        <div className={styles.spinnerContainer}>
+          <Spin className={styles.ant_spin} indicator={antIcon} />
+        </div>
       ) : (
         <div className={styles.container}>
           <div class={styles.tablecontainer}>

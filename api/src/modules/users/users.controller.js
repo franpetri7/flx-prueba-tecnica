@@ -24,7 +24,6 @@ const getAllUsers = async (req, res) => {
   }
 };
 const getUserById = async (req, res) => {
-  console.log("hola1");
   try {
     const { id } = req.params;
     const response = await getUserByIdIndb(id);

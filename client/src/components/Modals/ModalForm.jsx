@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Input, InputNumber, Select, Button, Modal, Form } from "antd";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { updateUser, createUser, getUsers } from "../../redux/actions";
 
 const ModalForm = ({ userId, visible, onCancel }) => {
-  const userById = useSelector((state) => state.auxUsers);
-  const user = useSelector((state) => state.allUsers);
   const dispatch = useDispatch();
   const [input, setInput] = useState({
     username: "",
@@ -47,7 +45,6 @@ const ModalForm = ({ userId, visible, onCancel }) => {
   };
   const onFinish = (values) => {
     console.log(values);
-    // Aquí puedes enviar los datos del formulario
   };
 
   const handleChangeInput = (e) => {
@@ -96,7 +93,7 @@ const ModalForm = ({ userId, visible, onCancel }) => {
         onCancel={handleCancel}
         footer={null}
       >
-        <div>
+        <div style={{ marginTop: "30px" }}>
           <Form
             autoComplete="off"
             validateMessages={validateMessages}
@@ -116,6 +113,7 @@ const ModalForm = ({ userId, visible, onCancel }) => {
               <Input name="username" onChange={handleChangeInput} />
             </Form.Item>
             <Form.Item
+              style={{ marginRight: "30px" }}
               label="Email"
               name="email"
               rules={[
@@ -203,10 +201,6 @@ const ModalForm = ({ userId, visible, onCancel }) => {
           </Form>
         </div>
       </Modal>
-
-      {/* <Button type="primary" onClick={() => setVisible(true)}>
-        Abrir Modal
-      </Button> */}
     </div>
   );
 };

@@ -9,7 +9,6 @@ import {
   LOADING,
 } from "./actionsType";
 import axios from "axios";
-const server = "http://localhost:3000/users";
 export const getUsers = (page, limit) => {
   return async (dispatch) => {
     try {
@@ -31,7 +30,6 @@ export const getUserById = (selectedUserId) => {
       const { data } = await axios.get(
         `http://localhost:3000/users/${selectedUserId}`
       );
-      console.log(data);
       return dispatch({
         type: GETUSERBYID,
         payload: data,
@@ -82,7 +80,6 @@ export const filterUsers = (status, page, limit) => {
       `http://localhost:3000/users/filterStatus?status=${status}&_page=${page}&_limit=${limit}`
     );
     const users = data.data;
-    console.log(users);
     dispatch({
       type: FILTER_USERS,
       payload: users,
@@ -94,7 +91,6 @@ export const createUser = (userData) => {
   return async (dispatch) => {
     try {
       const data = await axios.post(`http://localhost:3000/users`, userData);
-      console.log(data);
       return setTimeout(() => {
         dispatch({ type: CREATE_USER, payload: data });
       }, 2000);
@@ -112,7 +108,6 @@ export const updateUser = (userId, userData) => {
         `http://localhost:3000/users/${userId}`,
         userData
       );
-      console.log(data);
       return setTimeout(() => {
         dispatch({ type: EDITUSERS, payload: data });
       }, 2000);

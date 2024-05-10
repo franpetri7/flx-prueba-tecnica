@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./BarraUsuarios.module.css";
 import ModalForm from "../Modals/ModalForm";
 import { useDispatch } from "react-redux";
-import { Input, Select, Button, Modal } from "antd";
+import { Input, Select, Button } from "antd";
 import { searchUsers, filterUsers } from "../../redux/actions";
 
 const BarraUsuarios = ({ pageIndex, pageSize }) => {
@@ -35,9 +35,6 @@ const BarraUsuarios = ({ pageIndex, pageSize }) => {
   };
   const showModal = () => {
     setIsModalOpen(true);
-  };
-  const handleOk = () => {
-    setIsModalOpen(false);
   };
   const handleCancel = () => {
     setIsModalOpen(false);
