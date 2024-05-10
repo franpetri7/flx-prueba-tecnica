@@ -1,20 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./BarraUsuarios.module.css";
+import ModalForm from "../Modals/ModalForm";
 import { useDispatch } from "react-redux";
-import { Input, Space, Select, Button, Modal } from "antd";
+import { Input, Select, Button, Modal } from "antd";
 import { searchUsers, filterUsers } from "../../redux/actions";
 
-const BarraUsuarios = () => {
+const BarraUsuarios = ({ pageIndex, pageSize }) => {
+  //Estados y variables
   const dispatch = useDispatch();
   const { Search } = Input;
-
-  const handleSearch = (value) => {
-    dispatch(searchUsers(value));
-  };
-  const handleChange = (value1) => {
-    dispatch(filterUsers(value1));
-  };
+  const [nameValue, setNameValue] = useState("");
+  const [statusValue, setStatusValue] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  //UseEffects para el paginado
+  useEffect(() => {
+    if (nameValue !== "") dispatch(searchUsers(nameValue, pageIndex, pageSize));
+  }, [nameValue, pageIndex, pageSize]);
+
+  useEffect(() => {
+    if (statusValue !== "")
+      dispatch(searchUsers(statusValue, pageIndex, pageSize));
+  }, [statusValue, pageIndex, pageSize]);
+
+  //Funciones
+  const handleSearch = (value) => {
+    setNameValue(value);
+    dispatch(searchUsers(value, pageIndex, pageSize));
+  };
+
+  const handleChange = (value1) => {
+    setStatusValue(value1);
+    dispatch(filterUsers(value1, pageIndex, pageSize));
+  };
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -32,27 +50,31 @@ const BarraUsuarios = () => {
       </div>
       <div className={styles.barracontainer}>
         <div className={styles.filtercontainer}>
-          <Space direction="vertical">
-            <Search
-              placeholder="Buscar usuarios"
-              allowClear
-              size="large"
-              onSearch={handleSearch}
-              className={styles.search}
-            />
-          </Space>
+          <Search
+            placeholder="Buscar usuarios"
+            onSearch={handleSearch}
+            style={{
+              width: 276,
+              marginBottom: 20,
+            }}
+          />
           <Select
             placeholder="Filtrar por estado"
-            className={styles.select}
+            defaultValue="Filtrar por estado"
+            style={{
+              width: 210,
+              height: 40,
+              marginLeft: 10,
+            }}
             onChange={handleChange}
             options={[
               {
                 value: "active",
-                label: "Active",
+                label: "Activo",
               },
               {
                 value: "inactive",
-                label: "Inactive",
+                label: "Inactivo",
               },
             ]}
           />
@@ -67,11 +89,7 @@ const BarraUsuarios = () => {
           </Button>
         </div>
       </div>
-      <Modal open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-      </Modal>
+      <ModalForm userId={0} visible={isModalOpen} onCancel={handleCancel} />
     </div>
   );
 };

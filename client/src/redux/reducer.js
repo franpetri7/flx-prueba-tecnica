@@ -3,7 +3,9 @@ import {
   DELETEUSERS,
   SEARCH_USERS,
   CREATE_USER,
+  FILTER_USERS,
   EDITUSERS,
+  GETUSERBYID,
   LOADING,
 } from "./actionsType";
 
@@ -25,13 +27,23 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         allUsers: action.payload,
+        loading: false,
+      };
+    case GETUSERBYID:
+      return {
+        ...state,
         auxUsers: action.payload,
+        loading: false,
+      };
+    case FILTER_USERS:
+      return {
+        ...state,
+        allUsers: action.payload,
         loading: false,
       };
     case CREATE_USER:
       return {
         ...state,
-        auxUsers: [...state.usersRender, action.payload],
         loading: false,
       };
     case EDITUSERS:
@@ -42,6 +54,7 @@ const reducer = (state = initialState, action) => {
     case DELETEUSERS:
       return {
         ...state,
+        allUsers: action.payload,
         loading: false,
       };
     case LOADING:

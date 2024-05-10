@@ -21,14 +21,6 @@
   display: flex;
   gap: 15px;
 }
-.search {
-  width: 290px;
-  height: 40px;
-}
-.select {
-  width: 210px;
-  height: 40px;
-}
 .usuarios {
   color: rgba(0, 0, 0, 0.45);
 }

@@ -58,32 +58,34 @@ const getUserByIdIndb = async (id) => {
 
 const deleteUserInDB = async (id) => {
   try {
-    const deletedProduct = await axios.delete(`${URL}/${id}`);
-    return deletedProduct;
+    const deletedUser = await axios.delete(`${URL}/${id}`);
+    return deletedUser;
   } catch (error) {
     throw error;
   }
 };
 
-const getUsersInDB = async (searcher) => {
+const getUsersInDB = async (searcher, page, limit) => {
   try {
-    let query = `${URL}?q=${searcher}`;
+    let query = `${URL}?q=${searcher}&_page=${page}&_limit=${limit}`;
 
-    const response = await axios.get(query);
+    const data = await axios.get(query);
+    const totalCount = data.headers["x-total-count"];
+    const users = data.data;
 
-    return response.data;
+    return { users, totalCount };
   } catch (error) {
     throw error;
   }
 };
 
-const getUserByStatusInDB = async (status) => {
+const getUserByStatusInDB = async (status, page, limit) => {
   try {
-    let query = `${URL}?status=${status}`;
-
-    const response = await axios.get(query);
-
-    return response.data;
+    let query = `${URL}?status=${status}&_page=${page}&_limit=${limit}`;
+    const data = await axios.get(query);
+    const totalCount = data.headers["x-total-count"];
+    const users = data.data;
+    return { users, totalCount };
   } catch (error) {
     throw error;
   }

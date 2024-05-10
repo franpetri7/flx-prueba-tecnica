@@ -1,5 +1,4 @@
 import TablaUsuarios from "./components/TablaUsuarios/TablaUsuarios";
-import Tabla3 from "./components/TablaUsuario/Tabla";
 import Navbar from "../src/components/Navbar/Navbar";
 
 import "./App.css";
@@ -14,9 +13,8 @@ export default class App extends Component {
             path="/"
             element={
               <>
-                <Tabla3 />
-                {/* <Navbar /> */}
-                {/* <TablaUsuarios /> */}
+                <Navbar />
+                <TablaUsuarios />
               </>
             }
           />

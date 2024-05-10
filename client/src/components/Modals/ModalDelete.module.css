@@ -1,0 +1,26 @@
+.deleteuser {
+  color: red;
+}
+
+.titlemodal {
+  font-size: large;
+  font-weight: 600;
+}
+.modalcontainer {
+  margin-top: 15px;
+  padding: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.modalinputcontainer {
+  padding: 25px;
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, auto);
+  gap: 40px 30px;
+}
+
+.modalinputcontainer Input {
+  width: 100%;
+}

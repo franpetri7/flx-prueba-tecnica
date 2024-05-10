@@ -12,7 +12,6 @@ const getAllUsers = async (req, res) => {
   try {
     const { _page, _limit } = req.query;
     const response = await getAllUsersFromDB(_page, _limit);
-    console.log(response);
     return res.status(200).json({
       users: response.users,
       total: response.totalCount,
@@ -64,11 +63,15 @@ const deleteUsers = async (req, res) => {
 };
 
 const filterUsers = async (req, res) => {
-  console.log("hola");
   try {
-    const { q } = req.query;
-    const filteredUsers = await getUsersInDB(q);
-    return res.status(200).json(filteredUsers);
+    const { q, _page, _limit } = req.query;
+    const users = await getUsersInDB(q, _page, _limit);
+    return res.status(200).json({
+      users: users.users,
+      total: users.totalCount,
+      currentPage: _page,
+      perPage: _limit,
+    });
   } catch (error) {
     console.error("Error filtering users:", error);
     res.status(500).json({ error: "Error filtering users" });
@@ -77,9 +80,14 @@ const filterUsers = async (req, res) => {
 
 const getUsersByStatus = async (req, res) => {
   try {
-    const { status } = req.query;
-    const users = await getUserByStatusInDB(status);
-    return res.status(200).json(users);
+    const { status, _page, _limit } = req.query;
+    const users = await getUserByStatusInDB(status, _page, _limit);
+    return res.status(200).json({
+      users: users.users,
+      total: users.totalCount,
+      currentPage: _page,
+      perPage: _limit,
+    });
   } catch (error) {
     console.error("Error getting users by status:", error);
     res.status(500).json({ error: "Error getting users by status" });
